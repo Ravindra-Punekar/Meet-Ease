@@ -4,7 +4,7 @@ import Button from '../../../../components/shared/Button/Button'
 
 const Email = () => {
   return (
-    <Card title="Welcome to Codershouse! (Email)" icon="logo">
+    <Card title="Enter your email id" icon="email-emoji">
                 
     <div>
         <Button  text="Next" />
