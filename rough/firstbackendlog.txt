@@ -1,0 +1,124 @@
+webpack compiled with 1 warning
+Terminate batch job (Y/N)? y
+PS C:\New\Desktop Folder\VS Code\Project Work\frontend> cd ..        
+PS C:\New\Desktop Folder\VS Code\Project Work> cd backend
+PS C:\New\Desktop Folder\VS Code\Project Work\backend> npm init -y   
+Wrote to C:\New\Desktop Folder\VS Code\Project Work\backend\package.json:
+
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
+
+
+PS C:\New\Desktop Folder\VS Code\Project Work\backend> npm add expres
+
+added 58 packages, and audited 59 packages in 1s
+
+7 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+
+Did you mean this?
+    npm run dev # run the "dev" package script
+
+To see a list of supported npm commands, run:
+  npm help
+PS C:\New\Desktop Folder\VS Code\Project Work\backend> npm add -D nodemon
+
+added 32 packages, and audited 91 packages in 5s
+
+10 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+PS C:\New\Desktop Folder\VS Code\Project Work\backend> npm dev       
+Unknown command: "dev"
+
+Did you mean this?
+    npm run dev # run the "dev" package script
+
+To see a list of supported npm commands, run:
+  npm help
+PS C:\New\Desktop Folder\VS Code\Project Work\backend> npm run dev
+
+> backend@1.0.0 dev
+> nodemon server.js
+
+[nodemon] 2.0.22
+[nodemon] to restart at any time, enter `rs`
+[nodemon] watching path(s): *.*
+[nodemon] watching extensions: js,mjs,json  
+[nodemon] starting `node server.js`
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+C:\New\Desktop Folder\VS Code\Project Work\backend\server.js:12
+app.listen(PORT, ()=>con(`Listening on port ${PORT}`));        
+                     ^
+
+ReferenceError: con is not defined
+    at Server.<anonymous> (C:\New\Desktop Folder\VS Code\Project Work\backend\server.js:12:22)
+    at Object.onceWrapper (node:events:627:28)
+    at Server.emit (node:events:513:28)
+    at emitListeningNT (node:net:1774:10)
+    at process.processTicksAndRejections (node:internal/process/task_queues:81:21)
+
+Node.js v18.14.0
+[nodemon] app crashed - waiting for file changes before starting...  
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+C:\New\Desktop Folder\VS Code\Project Work\backend\server.js:12
+app.listen(PORT, ()=>console(`Listening on port ${PORT}`));
+                     ^
+
+TypeError: console is not a function
+    at Server.<anonymous> (C:\New\Desktop Folder\VS Code\Project Work\backend\server.js:12:22)
+    at Object.onceWrapper (node:events:627:28)
+    at Server.emit (node:events:513:28)
+    at emitListeningNT (node:net:1774:10)
+    at process.processTicksAndRejections (node:internal/process/task_queues:81:21)
+
+Node.js v18.14.0
+[nodemon] app crashed - waiting for file changes before starting...  
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Listening on port 5500
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Listening on port 5500
+
+
+
+
+
+
+Problem 2:37:00
+
+
+Node.js v18.14.0
+[nodemon] app crashed - waiting for file changes before starting...  
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Listening on port 5500
+C:\New\Desktop Folder\VS Code\Project Work\backend\controllers\auth-controller.js:20
+        const hash = hashService.hashOtp(data);
+                                 ^
+
+TypeError: hashService.hashOtp is not a function
+    at sendOtp (C:\New\Desktop Folder\VS Code\Project Work\backend\controllers\auth-controller.js:20:34)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+Node.js v18.14.0
+[nodemon] app crashed - waiting for file changes before starting...  
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Listening on port 5500
