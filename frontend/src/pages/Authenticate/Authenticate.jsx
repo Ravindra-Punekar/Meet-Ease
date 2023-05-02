@@ -7,17 +7,15 @@ const steps = {
     2: StepOtp,
 };
 
-const Login = () => {
+const Authenticate = () => {
     const [step, setStep] = useState(1);
     const Step = steps[step];
 
     function onNext() {
         setStep(step + 1);
     }
-    return  <div>
-        This is Login Page
-        <Step onNext={onNext} />
-        </div>;
+
+    return <Step onNext={onNext} />;
 };
 
-export default Login;
+export default Authenticate;

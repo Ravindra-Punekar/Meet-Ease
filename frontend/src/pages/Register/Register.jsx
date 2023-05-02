@@ -21,10 +21,10 @@ const Register = () => {
     function onNext() {
         setStep(step + 1);
     }
-
     return (
-        <div>
-            <Step onNext={onNext} />
+        // <div>This is Register Page</div>
+        <div>This is Register page
+            {/* <Step onNext={onNext} /> */}
         </div>
     );
 };
