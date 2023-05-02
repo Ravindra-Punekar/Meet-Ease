@@ -13,6 +13,7 @@ const Authenticate = () => {
 
     function onNext() {
         setStep(step + 1);
+
     }
 
     return <Step onNext={onNext} />;

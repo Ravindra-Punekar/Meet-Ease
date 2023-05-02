@@ -8,8 +8,6 @@ import {
   Outlet,
 } from "react-router-dom";
 import Navigation from "./components/shared/Navigation/Navigation";
-// import Register from "./pages/Register/Register";
-// import Login from "./pages/Login/Login";
 import Rooms from "./pages/Rooms/Rooms";
 
 import Authenticate from "./pages/Authenticate/Authenticate";
@@ -42,10 +40,6 @@ function App() {
             ): <Home/>
         } /> */}
 
-
-        {/* <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} /> */}
-       
         
         {/* <Route path="authenticate" element={
           !isAuth? (
