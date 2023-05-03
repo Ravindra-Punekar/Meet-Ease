@@ -16,10 +16,10 @@ class AuthController {
         //hash
         const ttl = 1000*60*2; //time-to-leave - 2min
         const expires = Date.now()+ttl;
-        const data = `${phone}.${otp}.${expires}`   //hash
-        // const hash = hashService.hashOtp(data);
+        const data = `${phone}.${otp}.${expires}` ;  //hash
+        const hash = hashService.hashOtp(data);
         //till 2:37:00 
-        res.json({otp: otp});
+        res.json({hash: hash});
     }
 }
 
