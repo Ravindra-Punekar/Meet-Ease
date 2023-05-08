@@ -13,20 +13,11 @@ import Rooms from "./pages/Rooms/Rooms";
 import Authenticate from "./pages/Authenticate/Authenticate";
 import Activate from "./pages/Activate/Activate";
 import React, { Children, useState } from "react";
-
-// const isAuth = true;
+import { useSelector } from "react-redux";
 
 
 function App() {
  
-  // const [isAuth, setIsAuth ] = useState(null);
-  
-  // const auth =()=>{
-  //   setIsAuth(true);
-  // };
-  // const Nauth =()=>{
-  //   setIsAuth(false);
-  // };
  
   return (
     <BrowserRouter>
@@ -81,11 +72,10 @@ function App() {
   );
 }
 
-const isAuth = false;
-const user={
-  activated: false,
-};
+
 const GuestRoute = ({children}) => {
+  const { isAuth } = useSelector((state) => state.auth);
+
   return (
     isAuth? (
         <Navigate to={'/rooms'} replace/>
@@ -94,7 +84,10 @@ const GuestRoute = ({children}) => {
         )
   )
 };
+
 const SemiProtectedRoute = ({children}) => {
+  const { user, isAuth } = useSelector((state) => state.auth);
+
   return (
     !isAuth? (
         <Navigate to={'/'} replace/>
@@ -108,6 +101,8 @@ const SemiProtectedRoute = ({children}) => {
   )
 };
 const ProtectedRoute = ({children}) => {
+  const { user, isAuth } = useSelector((state) => state.auth);
+
   return (
     !isAuth? (
         <Navigate to={'/'} replace/>

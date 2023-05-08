@@ -24,11 +24,11 @@ class AuthController {
 
         //send otp 
         try {
-            await otpService.sendBySms(phone, otp);
+            // await otpService.sendBySms(phone, otp);
              res.json({
                 hash: `${hash}.${expires}`,
                 phone,
-                otp,
+                otp,    //temporary
             });
 
         } catch(err){
@@ -82,9 +82,8 @@ class AuthController {
             maxAge: 1000*60*30*24,
             httpOnly: true,
         });
-        // const userDto = new UserDto(user);
-        // res.json({accessToken, user: userDto});
-        res.json({accessToken});
+        const userDto = new UserDto(user);
+        res.json({accessToken, user: userDto});
     }
 }
 
