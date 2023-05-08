@@ -1,4 +1,4 @@
-const UsesrModel = require('../models/user-model');
+const UserModel = require('../models/user-model');
 
 class UserService {
     async findUser(filter){
@@ -6,7 +6,7 @@ class UserService {
         return user;
     }
     async createUser(data){
-        const user = await UserModel.createUser(data);
+        const user = await UserModel.create(data);
         return user;
     }
 }

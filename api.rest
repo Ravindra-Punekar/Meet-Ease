@@ -10,7 +10,9 @@ POST http://localhost:5500/api/verify-otp HTTP/1.1
 Content-Type: application/json
 
 {
-    "phone": "+917796274488",
-    "otp": 4404,
-    "hash": "60203e6a456a61db54f4103a41d1c0ffbb72fcaa9c3c1160c058760b02a77083.1683119873369",
+    "otp": 2564, 
+    "hash": "275054a107a31c9cfcd617b25365ac745a9f1875017d22e5f3d5e20f67095599.1683564328271",
+    "phone": "+917796274488"
 }
+
+#everytime after sending otp req above, change otp and hash
