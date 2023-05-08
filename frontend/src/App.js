@@ -81,9 +81,9 @@ function App() {
   );
 }
 
-const isAuth = true;
+const isAuth = false;
 const user={
-  activated: true,
+  activated: false,
 };
 const GuestRoute = ({children}) => {
   return (
