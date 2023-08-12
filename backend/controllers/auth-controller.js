@@ -71,22 +71,29 @@ class AuthController {
             
         }
 
-        //token
+        //tokens generated here
         const { accessToken, refreshToken } = tokenService.generateTokens({
             _id: user._id,
             activated: false,
         });
         
+        //adding refresh token to cookies
+        //but not stored in db. and if user logs out then we have to erase refreshtoken
+        //to store refreshtoken in databse, we need module callled refresh-model.js
+       
         await tokenService.storeRefreshToken(refreshToken, user._id);
-        //cookie
+       
         res.cookie('refreshToken', refreshToken , {
             maxAge: 1000*60*30*24,
             httpOnly: true,
         });
+
+        //storing accessToken in db is not secure, so we will store it in cookie
         res.cookie('accessToken', accessToken , {
             maxAge: 1000*60*30*24,
             httpOnly: true,
         });
+        
         const userDto = new UserDto(user);
         res.json({user: userDto, auth: true });
     }

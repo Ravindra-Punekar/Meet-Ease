@@ -3,7 +3,7 @@ import axios from "axios";
 
 const api = axios.create({
     baseURL: process.env.REACT_APP_API_URL,
-    withCredentials:true,
+    withCredentials:true, //if false cookie will not be shared
     headers:{
         "Content-Type": "application/json",
         "Accept": 'application/json',   
