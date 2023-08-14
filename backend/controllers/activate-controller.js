@@ -1,4 +1,4 @@
-const Jimp = require('jimp');
+const Jimp = require('jimp'); //used to compress image size
 const path = require('path');
 const userService = require('../services/user-service');
 const { response } = require('express');
@@ -15,7 +15,7 @@ class ActivateController{
 
         //Images is in Base64
         const buffer = Buffer.from(
-            avatar.replace(/^data:image\/png;base64,/, ''),
+            avatar.replace(/^data:image\/(png|jpg|jpeg);base64,/, ''),
             'base64'
         );
         const imagePath = `${Date.now()}-${Math.round(
@@ -38,6 +38,8 @@ class ActivateController{
             const user = await userService.findUser({ _id: userId });
             if (!user) {
                 res.status(404).json({ message: 'User not found!' });
+                console.log(err);
+                return;
             }
             user.activated = true;
             user.name = name;
