@@ -15,7 +15,7 @@ class ActivateController{
 
         //Images is in Base64
         const buffer = Buffer.from(
-            avatar.replace(/^data:image\/(png|jpg|jpeg);base64,/, ''),
+            avatar.replace(/^data:image\/(png|jpg|jpeg);base64,/, ''), //while adding another format, dont keep space in pipes
             'base64'
         );
         const imagePath = `${Date.now()}-${Math.round(
