@@ -14,12 +14,18 @@ import Authenticate from "./pages/Authenticate/Authenticate";
 import Activate from "./pages/Activate/Activate";
 import React, { Children, useState } from "react";
 import { useSelector } from "react-redux";
-
+import { useLoadingWithRefresh } from "./hooks/useLoadingWithRefresh";
 
 function App() {
- 
- 
-  return (
+  
+
+  //call refresh endpoint 
+  const { loading } =useLoadingWithRefresh();  
+  return loading?(
+    'Loading...'
+  ):(
+
+    
     <BrowserRouter>
       <Navigation />
 
