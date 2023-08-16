@@ -6,13 +6,15 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setAvatar } from '../../../store/activateSlice';
 import {activate} from '../../../http/index';
 import { setAuth } from '../../../store/authSlice';
+import Loader from '../../../components/shared/Loader/Loader';
 
 const StepAvatar = ({ onNext }) => {
 
     const dispatch = useDispatch();
     const {name, avatar} = useSelector((state)=>state.activate);
     const[image, setImage] = useState('/images/monkey-avatar.png');
-    
+    const [loading, setLoading] = useState(false);
+
     function captureImage(e){
         const file = e.target.files[0];
         const reader = new FileReader();
@@ -24,18 +26,29 @@ const StepAvatar = ({ onNext }) => {
     }
 
     async function submit(){
-        if (!name || !avatar) return;
+        setLoading(true);
+        if (!name || !avatar) {
+            alert("Please enter valid name and avatar");
+            setLoading(false);
+            return;
+        }
         try{
           const {data} = await activate({name,avatar});
           if(data.auth){
             dispatch(setAuth(data));
           }
-          console.log(data);
         }catch(err){
             console.log(err);
         }
+        
+        finally{ 
+            // in any case (try/catch) this will run - finally 
+            setLoading(false);
+        }
     }
-
+   
+    if(loading) return (<Loader message="Activation in progress..."/>);
+    
     return (
         <>
            <Card title={`Okay, ${name}`}icon="monkey-emoji">

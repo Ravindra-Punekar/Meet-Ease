@@ -49,15 +49,12 @@ class AuthController {
     }
 
     const data = `${phone}.${otp}.${expires}`;
-
     const isValid = otpService.verifyOtp(hashedOtp, data);
-
     if (!isValid) {
       res.status(400).json({ message: "Invalid OTP!" });
     }
 
     let user;
-
     try {
       user = await userService.findUser({ phone });
       if (!user) {
@@ -156,6 +153,25 @@ class AuthController {
     res.json({ user: userDto, auth: true });
       
   }
+
+  async logout(req, res) {
+    // get refresh token from cookie
+    const { refreshToken } = req.cookies;
+
+    await tokenService.removeToken(refreshToken);
+    //delete refresh token from db
+    // try {
+    // } catch (err) {
+      // return res.status(500).json({ message: "Internal Error" });
+    // }
+
+    //delete cookies
+    res.clearCookie("refreshToken");
+    res.clearCookie("accessToken");
+
+    res.json({ user: null, auth: false });
+  }
 } 
 
 module.exports = new AuthController();
+

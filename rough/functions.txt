@@ -1,0 +1,20 @@
+
+//explain abouve code in detail
+// 1. sendOtp() - generate otp, hash, send otp, store in db
+// 2. verifyOtp() - verify otp, find user, generate tokens, store refresh token in db, store access token in cookie, send user data
+// 3. refresh() - get refresh token from cookie, verify refresh token, check if token is in db, check if valid user, generate new tokens, update tokens, put in cookie, send user data  
+// 4. logout() - get refresh token from cookie, delete refresh token from db, delete cookies, send user data
+// 5. token-service.js - generate tokens, store refresh token in db, verify access token, verify refresh token, find refresh token, update refresh token, remove token
+// 6. user-service.js - find user, create user
+// 7. otp-service.js - generate otp, send by sms, verify otp
+// 8. hash-service.js - hash otp, verify otp
+// 9. user-dto.js - user data
+// 10. auth-controller.js - all above functions
+// 11. routes.js - all routes
+// 12. index.js - all urls
+// 13. app.js - all middlewares
+// 14. server.js - server
+// 15. .env - environment variables
+// 16. package.json - dependencies
+// 17. package-lock.json - dependencies
+// 18. .gitignore - gitignore
