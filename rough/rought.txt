@@ -1,0 +1,20 @@
+download all Code
+connect with mongodb via mongodb compass
+    url: mongodb://0.0.0.0:27017/
+    save and connect
+
+create account on twilio 
+    service: sms 
+    enter SMS_SID, SMS_NUMBER in env
+
+Can create your own HASH_SECRET with crypto
+
+open terminal 1: 
+    cd frontend
+    npm run start
+
+new terminal 2:
+    cd backend
+    npm run dev
+
+inspect->console,network,
