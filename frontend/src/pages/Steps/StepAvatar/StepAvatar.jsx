@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Card from '../../../components/shared/Card/Card';
 import Button from '../../../components/shared/Button/Button';
 import Styles from './StepAvatar.module.css';
@@ -8,12 +8,14 @@ import {activate} from '../../../http/index';
 import { setAuth } from '../../../store/authSlice';
 import Loader from '../../../components/shared/Loader/Loader';
 
+
 const StepAvatar = ({ onNext }) => {
 
     const dispatch = useDispatch();
     const {name, avatar} = useSelector((state)=>state.activate);
     const[image, setImage] = useState('/images/monkey-avatar.png');
     const [loading, setLoading] = useState(false);
+    const [unMounted, setUnMounted] = useState(false);
 
     function captureImage(e){
         const file = e.target.files[0];
@@ -35,7 +37,11 @@ const StepAvatar = ({ onNext }) => {
         try{
           const {data} = await activate({name,avatar});
           if(data.auth){
-            dispatch(setAuth(data));
+            // check if component is unmounted
+            if(!unMounted){
+                dispatch(setAuth(data));
+            }
+            
           }
         }catch(err){
             console.log(err);
@@ -46,7 +52,13 @@ const StepAvatar = ({ onNext }) => {
             setLoading(false);
         }
     }
-   
+    // cleaning function runs if component is unmounted    
+    useEffect(()=>{
+        return ()=>{
+            setUnMounted(true);
+        }
+     },[]);
+
     if(loading) return (<Loader message="Activation in progress..."/>);
     
     return (
