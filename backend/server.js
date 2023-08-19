@@ -8,11 +8,17 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 
 app.use(cookieParser());
+
 const corsOption = {
     credential: true,
-    origin: ['http://localhost:3000'],
+    origin: ['http://localhost:3000', '*'],
+    credentials: true,
+    methods: ['GET', 'PUT', 'POST', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    optionsSuccessStatus: 200  
 };
 app.use(cors(corsOption));
+
 app.use('/storage', express.static('storage'));
  
 const PORT = process.env.PORT || 5500;
@@ -23,7 +29,7 @@ app.use(router);
 app.use((_req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Headers', '*');
-  
+
     next();
   });
 app.get('/', (req, res)=>{
