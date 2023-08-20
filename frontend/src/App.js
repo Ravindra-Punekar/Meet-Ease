@@ -9,7 +9,7 @@ import {
 } from "react-router-dom";
 import Navigation from "./components/shared/Navigation/Navigation";
 import Rooms from "./pages/Rooms/Rooms";
-
+import Room from "./pages/Room/Room";
 import Authenticate from "./pages/Authenticate/Authenticate";
 import Activate from "./pages/Activate/Activate";
 import React, { Children, useState } from "react";
@@ -62,6 +62,10 @@ function App() {
         
         <Route element={ <ProtectedRoute/> }>
           <Route element={ <Rooms/> } path="/rooms" />
+        </Route>
+
+        <Route element={ <ProtectedRoute/> }>
+          <Route element={ <Room/> } path="/room/:id" />
         </Route>
         
         {/* Below partially works, outlet doesent work  */}

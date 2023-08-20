@@ -39,16 +39,18 @@ const Navigation = () => {
       </Link>
       {isAuth && (
         <div className={styles.navRight}>
-          <h3>{user.name}</h3>
-          <Link to="/">
-            <img
-              className={styles.avatar}
-              src={user.avatar}
-              width="40"
-              height="40"
-              alt="avatar"
-            />
-          </Link>
+          <h3>{user?.name}</h3>
+          
+            <Link to="/">
+              <img
+                className={styles.avatar}
+                src={user.avatar? user.avatar : '/images/monkey-avatar.png'}
+                width="40"
+                height="40"
+                alt="avatar"
+              />
+            </Link>
+          
           {isAuth && (
             <button className={styles.logoutButton} onClick={logoutUser}>
               <img src="/images/arrow-forward.png" alt="logout" />
