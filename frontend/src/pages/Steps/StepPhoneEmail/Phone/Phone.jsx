@@ -20,7 +20,11 @@ const Phone = ({ onNext }) => {
     //server request
     const { data } = await sendOtp({ phone: phoneNumber });
     console.log(data);
+    
+    //redux: dispatch action to set otp data in store (phone and hash) 
     dispatch(setOtp({ phone: data.phone, hash: data.hash }));
+    
+    //move to next step
     onNext();
   }
 

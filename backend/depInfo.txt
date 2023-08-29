@@ -1,0 +1,22 @@
+//cookie-parser is a middleware which parses cookies attached to the client request object. 
+//
+//CORS is a node.js package for providing a Connect/Express middleware that can be used to enable CORS with various options.
+//Dotenv is a zero-dependency module that loads environment variables from a .env file into process.env.
+//Express is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.
+//jimp An image processing library written entirely in JavaScript for Node, with zero external or native dependencies.
+//Mongoose is a MongoDB object modeling tool designed to work in an asynchronous environment.
+//Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine.
+//Nodemon is a tool that helps develop node.js based applications by automatically restarting the node application when file changes in the directory are detected.
+
+//Path is an exact copy of the NodeJS ’path’ module published to the NPM registry.
+//React is a JavaScript library for building user interfaces.
+//React-dom is a package for React for working with the DOM.
+//React-router-dom is a DOM bindings for React Router.
+//React-scripts is a set of scripts for React.
+
+//Redux is a predictable state container for JavaScript apps.
+
+//Socket.io is a JavaScript library for realtime web applications. It enables realtime, bi-directional communication between web clients and servers.
+
+//Webpack is a module bundler.
+//Webpack-node-externals is a webpack plugin that allows you to exclude node_modules dependencies from the bundle.

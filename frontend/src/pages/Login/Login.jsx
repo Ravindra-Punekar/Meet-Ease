@@ -14,10 +14,13 @@ const Login = () => {
     function onNext() {
         setStep(step + 1);
     }
-    return  <div>
-        This is Login Page
-        <Step onNext={onNext} />
-        </div>;
+    return (
+        <div>
+         This is Login Page
+         <Step onNext={onNext} />
+        </div>
+    );
+     
 };
 
 export default Login;

@@ -28,12 +28,12 @@ const StepAvatar = ({ onNext }) => {
     }
 
     async function submit(){
-        setLoading(true);
         if (!name || !avatar) {
             alert("Please enter valid name and avatar");
             setLoading(false);
             return;
         }
+        setLoading(true);
         try{
           const {data} = await activate({name,avatar});
           if(data.auth){
