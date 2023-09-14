@@ -7,19 +7,17 @@ import {
   Navigate,
   Outlet,
 } from "react-router-dom";
-import React, { Children, useState } from "react";
-import { useSelector } from "react-redux";
-
-
 import Navigation from "./components/shared/Navigation/Navigation";
-import Loader from "./components/shared/Loader/Loader";
+import Rooms from "./pages/Rooms/Rooms";
 
 import Authenticate from "./pages/Authenticate/Authenticate";
 import Activate from "./pages/Activate/Activate";
-import Rooms from "./pages/Rooms/Rooms";
-import Room from "./pages/Room/Room";
-
+  // eslint-disable-next-line
+import React, { Children, useState } from "react";
+import { useSelector } from "react-redux";
 import { useLoadingWithRefresh } from "./hooks/useLoadingWithRefresh";
+import Loader from "./components/shared/Loader/Loader";
+import Room from "./pages/Room/Room";
 
 
 
@@ -46,12 +44,9 @@ function App() {
           <Route element={ <Activate/>} path="/activate" />
         </Route>
         
-        {/* Below partially works, outlet doesent work  */}
         <Route element={ <ProtectedRoute/> }>
-          <Route element={ <Outlet/> }>
             <Route element={ <Rooms/> } path="/rooms" />
             <Route element={ <Room/> } path="/room/:id" />
-          </Route>
         </Route>
 
       </Routes>
@@ -60,9 +55,8 @@ function App() {
   );
 }
 
-
 const GuestRoute = ({children}) => {
-  const { isAuth } = useSelector((state) => state.auth); //state is from redux store
+  const { isAuth } = useSelector((state) => state.auth);
 
   return (
     isAuth? (
@@ -80,7 +74,7 @@ const SemiProtectedRoute = ({children}) => {
     !isAuth? (
         <Navigate to={'/'} replace/>
         ) : (
-           isAuth && !user.activated ?(
+            !user.activated ?(
             <Outlet/>
            ) : (
             <Navigate to={'/rooms'} replace/>
@@ -96,7 +90,7 @@ const ProtectedRoute = ({children}) => {
     !isAuth? (
         <Navigate to={'/'} replace/>
         ) : (
-           isAuth && !user.activated ?(
+            !user.activated ?(
              <Navigate to={'/activate'} replace/>
            ) : (
             <Outlet/>

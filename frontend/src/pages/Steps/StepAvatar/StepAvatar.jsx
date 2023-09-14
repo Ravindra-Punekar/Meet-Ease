@@ -36,6 +36,8 @@ const StepAvatar = ({ onNext }) => {
         setLoading(true);
         try{
           const {data} = await activate({name,avatar});
+          console.log(data);
+
           if(data.auth){
             // check if component is unmounted
             if(!unMounted){
@@ -63,7 +65,7 @@ const StepAvatar = ({ onNext }) => {
     
     return (
         <>
-           <Card title={`Okay, ${name}`}icon="monkey-emoji">
+           <Card title={`Okay, ${name}`} icon="monkey-emoji">
                 <p className={Styles.subHeading}>How's this Avatar?</p>
                 <div className={Styles.avatarWrapper}>
                     <img className={Styles.avatarImage} src={image} alt="avatar" />
@@ -82,6 +84,7 @@ const StepAvatar = ({ onNext }) => {
                 {/* //now we have name, avatar , we can store it in sever */}
                 <div>
                     <Button onClick={submit} text="Next" />
+             
                 </div>
             </Card>
         </>

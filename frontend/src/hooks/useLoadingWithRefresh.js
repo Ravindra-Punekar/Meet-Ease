@@ -22,6 +22,7 @@ export function useLoadingWithRefresh() {
         setLoading(false);
       }
     })();
+  // eslint-disable-next-line
   }, []);
 
   return { loading };
