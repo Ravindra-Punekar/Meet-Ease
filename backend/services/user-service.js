@@ -12,5 +12,5 @@ class UserService {
 }
 
 
-
+// eslint-disable-next-line
 module.exports = new UserService();

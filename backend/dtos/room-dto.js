@@ -2,8 +2,8 @@ class RoomDto {
     id;
     topic;
     roomType;
-    ownerId;
     speakers;
+    ownerId;
     createdAt; 
 
     constructor(room) {

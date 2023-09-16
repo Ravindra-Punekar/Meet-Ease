@@ -9,10 +9,10 @@ module.exports = async function(req,res,next){
         }        
         const userData = await tokenService.verifyAccessToken(accessToken);
         if(!userData){
-            throw new Error();
+            throw new Error(); 
         }
         req.user = userData;
-        console.log(userData);
+        // console.log(userData);
         next(); 
     } catch (err) {
         res.status(401).json({message: 'Invalid Token'});
