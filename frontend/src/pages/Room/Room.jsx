@@ -61,9 +61,12 @@ const Room = () => {
         </div>
 
         <div className={styles.clientsList}>
-          {clients.map((client, index) => { 
+          {clients.filter((client, index, self) => {
+            // Filter out clients with duplicate IDs
+            return index === self.findIndex((c) => c.id === client.id);
+          }).map((client) => { 
             return (
-              <div className={styles.client} key={index}>
+              <div className={styles.client} key={client.id}>
                 <div className={styles.userHead}>
                   <img
                     className={styles.userAvatar}
@@ -71,6 +74,7 @@ const Room = () => {
                     alt=''
                   />
                   <audio
+                    playsInline
                     autoPlay
                     ref={(instance) => provideRef(instance, client.id)}
                   ></audio>
@@ -85,7 +89,6 @@ const Room = () => {
                   </button>
                 </div>
                 <h4>{client.name}</h4>
-                <h4>{index}</h4>
               </div>
             );
           })}

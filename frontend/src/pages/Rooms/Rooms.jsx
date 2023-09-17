@@ -93,6 +93,7 @@ const Rooms = () => {
     setShowModal(true);
   }
 
+  const [search, setSearch] = useState("");
 
   return (
     <>
@@ -102,7 +103,7 @@ const Rooms = () => {
             <span className={styles.heading}>All voice rooms</span>
             <div className={styles.searchBox}>
               <img src="/images/search-icon.png" alt="search" />
-              <input type="text" className={styles.searchInput} />
+              <input type="text" onChange={(e)=> setSearch(e.target.value)} className={styles.searchInput} />
             </div>
           </div>
           <div className={styles.right}>
@@ -114,7 +115,11 @@ const Rooms = () => {
         </div>
 
         <div className={styles.roomsList}>
-          {rooms.map((room) => (
+          {
+          rooms.filter((room) => {
+            return search.toLowerCase()===''? room : 
+            room.topic.toLowerCase().includes(search.toLowerCase())
+          }).map((room) => (
             <RoomCard key={room.id} room={room} />
           ))}
         </div>

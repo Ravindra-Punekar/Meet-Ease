@@ -88,12 +88,12 @@ io.on("connection", (socket) => {
   });
 
   //handle relay SDP (session description protocol)
-  socket.on(ACTIONS.RELAY_SDP, ({ peerId, sessionDescription }) => {
-    io.to(peerId).emit(ACTIONS.SESSION_DESCRIPTION, {
-      peerId: socket.id,
-      sessionDescription,
+    socket.on(ACTIONS.RELAY_SDP, ({ peerId, sessionDescription }) => {
+        io.to(peerId).emit(ACTIONS.SESSION_DESCRIPTION, {
+            peerId: socket.id,
+            sessionDescription,
+        });
     });
-  });
 
   // Handle mute and unmute
   socket.on(ACTIONS.MUTE, ({ roomId, userId }) => {
@@ -106,9 +106,9 @@ io.on("connection", (socket) => {
       });
     });
   });
+
   socket.on(ACTIONS.UNMUTE, ({ roomId, userId }) => {
     const clients = Array.from(io.sockets.adapter.rooms.get(roomId) || []);
-
     clients.forEach((clientId) => {
       io.to(clientId).emit(ACTIONS.UNMUTE, {
         peerId: socket.id,
@@ -116,6 +116,19 @@ io.on("connection", (socket) => {
       });
     });
   });
+
+  socket.on(ACTIONS.MUTE_INFO, ({ userId, roomId, isMute }) => {
+    const clients = Array.from(io.sockets.adapter.rooms.get(roomId) || []);
+    clients.forEach((clientId) => {
+        if (clientId !== socket.id) {
+            console.log('mute info');
+            io.to(clientId).emit(ACTIONS.MUTE_INFO, {
+                userId,
+                isMute,
+            });
+        }
+    });
+});
 
   //Leave room
   const leaveRoom = ({ roomId }) => {
@@ -128,10 +141,10 @@ io.on("connection", (socket) => {
           userId: socketUserMapping[socket.id]?.id,
         });
 
-        socket.emit(ACTIONS.REMOVE_PEER, {
-          peerId: clientId,
-          userId: socketUserMapping[clientId]?.id,
-        });
+        // socket.emit(ACTIONS.REMOVE_PEER, {
+        //   peerId: clientId,
+        //   userId: socketUserMapping[clientId]?.id,
+        // });
       });
 
       socket.leave(roomId);

@@ -9,6 +9,7 @@ const ACTIONS = {
     REMOVE_PEER: 'remove-peer',
     MUTE: 'mute',
     UNMUTE: 'unmute',
+    MUTE_INFO: 'mute-info',
 
 };
 
