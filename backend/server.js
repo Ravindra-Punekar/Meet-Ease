@@ -5,7 +5,7 @@ const app = express();
 const router = require("./routes");
 const DbConnect = require("./database");
 const cors = require("cors");
-const cookieParser = require("cookie-parser");
+const cookieParser = require("cookie-parser"); 
 const ACTIONS = require("./actions");
 
 const server = require("http").createServer(app);
