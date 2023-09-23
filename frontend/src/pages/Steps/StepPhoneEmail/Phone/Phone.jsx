@@ -18,9 +18,11 @@ const Phone = ({ onNext }) => {
       return;
     }
     //server request
-    const { data } = await sendOtp({ phone: phoneNumber });
+    const { data } = await sendOtp({ phone:phoneNumber });
     console.log(data);
     
+    //when working with twilio, use below line
+    // const { data } = await sendOtp({ phone: `+91${phoneNumber}` });
     //redux: dispatch action to set otp data in store (phone and hash) 
     dispatch(setOtp({ phone: data.phone, hash: data.hash }));
     

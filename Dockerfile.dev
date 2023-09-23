@@ -1,0 +1,21 @@
+FROM node:18
+WORKDIR /frontend
+COPY ./frontend/package.json ./
+RUN npm install
+COPY ./frontend ./
+CMD ["npm","run","start"]
+
+# can i run this in my computer now?
+# yes. do changes in .env if needed
+
+# don one thing as if dockerfie is correct everything should work in my machine rght?
+# then you send me repo i will try to run the dockerfil
+# or you can run it in anyone elses mchine if it worked then dokerfile correct
+# means push this on dockerhub and send img??
+
+# ok i will no send repo. wait
+
+# but iam currently in a hurry i will run it in the evning and let you know
+# Ok. Thanks
+
+# the code is completely runing at your end right?

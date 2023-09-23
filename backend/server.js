@@ -12,7 +12,7 @@ const server = require("http").createServer(app);
 
 const io = require("socket.io")(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: process.env.FRONT_URL,
     methods: ["GET", "POST"],
   },
 });
@@ -20,9 +20,8 @@ const io = require("socket.io")(server, {
 app.use(cookieParser());
 
 const corsOption = {
-  credential: true,
-  origin: ["http://localhost:3000", "*"],
   credentials: true,
+  origin: [process.env.FRONT_URL, process.env.BASE_URL],
   methods: ["GET", "PUT", "POST", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
   optionsSuccessStatus: 200,
@@ -36,19 +35,19 @@ DbConnect();
 app.use(express.json({ limit: "8mb" }));
 
 app.use(router);
-app.use((_req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "*");
+// app.use((_req, res, next) => {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Headers", "*");
 
-  next();
-});
+//   next();
+// });
 app.get("/", (req, res) => {
   res.send("Hello from express js");
 });
 
-app.get("/products/:id", function (req, res, next) {
-  res.json({ msg: "This is CORS-enabled for all origins!" });
-});
+// app.get("/products/:id", function (req, res, next) {
+//   res.json({ msg: "This is CORS-enabled for all origins!" });
+// });
 
 //Sockets
 

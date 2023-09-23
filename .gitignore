@@ -7,6 +7,12 @@
 /.pnp
 .pnp.js
 
+/frontend/.env
+/frontend/.env.dev
+/frontend/.env.prod
+/backend/.env
+/backend/.env.dev
+/backend/.env.prod
 # testing
 /coverage
 
