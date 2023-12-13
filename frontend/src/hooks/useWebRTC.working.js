@@ -56,7 +56,7 @@ export const useWebRTC = (roomId, user) => {
                 // console.log('render add new client me', 6);
                 const localElement = audioElements.current[user.id];
                 if (localElement) {
-                    localElement.volume = 0;
+                    localElement.volume = 1;
                     localElement.srcObject = localMediaStream.current;
                 }
             });
