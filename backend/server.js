@@ -31,6 +31,13 @@ const corsOption = {
 app.use(cors(corsOption));
 // Handle preflight requests
 
+app.use((req, res, next) => {
+
+  res.header('Access-Control-Allow-Origin',  process.env.FRONT_URL);
+  res.header('Access-Control-Allow-Credentials', 'true');
+  next();
+})
+
 
 app.use("/storage", express.static("storage"));
 
