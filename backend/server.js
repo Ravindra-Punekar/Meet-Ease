@@ -14,20 +14,23 @@ const io = require("socket.io")(server, {
   cors: {
     origin: process.env.FRONT_URL,
     methods: ["GET", "POST"],
+    credentials: true, // Allow credentials in sockets
   },
 });
 
 app.use(cookieParser());
 
 const corsOption = {
-  credentials: true,
-  origin: true,
-  // origin: [process.env.FRONT_URL, process.env.BASE_URL],
+  credentials: true, // Allow credentials in regular HTTP requests
+  // origin: true,
+  origin: [process.env.FRONT_URL, process.env.BASE_URL],
   methods: ["GET", "PUT", "POST", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
   optionsSuccessStatus: 200,
 };
 app.use(cors(corsOption));
+// Handle preflight requests
+
 
 app.use("/storage", express.static("storage"));
 
@@ -46,9 +49,7 @@ app.get("/", (req, res) => {
   res.send("Hello from express js");
 });
 
-// app.get("/products/:id", function (req, res, next) {
-//   res.json({ msg: "This is CORS-enabled for all origins!" });
-// });
+
 
 //Sockets
 
